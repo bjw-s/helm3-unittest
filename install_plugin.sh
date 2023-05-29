@@ -12,15 +12,15 @@ echo "Downloading and installing helm3-unittest ${version} ..."
 
 url=""
 if [ "$(uname)" = "Darwin" ]; then
-    url="https://github.com/vbehar/helm3-unittest/releases/download/${version}/helm3-unittest_${version:1}_darwin_amd64.tar.gz"
+    url="https://github.com/bjw-s/helm3-unittest/releases/download/${version}/helm3-unittest_${version:1}_darwin_amd64.tar.gz"
 elif [ "$(uname)" = "Linux" ] ; then
     if [ "$(uname -m)" = "aarch64" ] || [ "$(uname -m)" = "arm64" ]; then
-        url="https://github.com/vbehar/helm3-unittest/releases/download/${version}/helm3-unittest_${version:1}_linux_arm64.tar.gz"
+        url="https://github.com/bjw-s/helm3-unittest/releases/download/${version}/helm3-unittest_${version:1}_linux_arm64.tar.gz"
     else
-        url="https://github.com/vbehar/helm3-unittest/releases/download/${version}/helm3-unittest_${version:1}_linux_amd64.tar.gz"
+        url="https://github.com/bjw-s/helm3-unittest/releases/download/${version}/helm3-unittest_${version:1}_linux_amd64.tar.gz"
     fi
 else
-    url="https://github.com/vbehar/helm3-unittest/releases/download/${version}/helm3-unittest_${version:1}_windows_amd64.tar.gz"
+    url="https://github.com/bjw-s/helm3-unittest/releases/download/${version}/helm3-unittest_${version:1}_windows_amd64.tar.gz"
 fi
 
 echo "$url"

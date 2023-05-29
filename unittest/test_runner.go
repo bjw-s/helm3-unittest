@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/vbehar/helm3-unittest/unittest/snapshot"
+	"github.com/bjw-s/helm3-unittest/unittest/snapshot"
 	"helm.sh/helm/v3/pkg/chart"
 	"helm.sh/helm/v3/pkg/chart/loader"
 )
@@ -164,7 +164,7 @@ func (tr *TestRunner) handleSuiteResult(result *TestSuiteResult) {
 	}
 }
 
-//printSummary print summary footer
+// printSummary print summary footer
 func (tr *TestRunner) printSummary(elapsed time.Duration) {
 	summaryFormat := `
 Charts:      %s

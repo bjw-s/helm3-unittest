@@ -1,5 +1,3 @@
-# Configuration file for http://goreleaser.com
-
 before:
   hooks:
     - ./update_version.sh
@@ -15,7 +13,6 @@ builds:
     env:
       - CGO_ENABLED=0
       - GO111MODULE=on
-      - GOFLAGS=-mod=vendor
 
 archives:
   - files:
