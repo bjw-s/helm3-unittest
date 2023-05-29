@@ -1,9 +1,9 @@
 # Unit Test plugin for Helm 3
 
-[![Release Status](https://github.com/vbehar/helm3-unittest/workflows/release/badge.svg)](https://github.com/vbehar/helm3-unittest/actions?query=workflow%3Arelease)
-[![Latest Release](https://img.shields.io/github/v/release/vbehar/helm3-unittest)](https://github.com/vbehar/helm3-unittest/releases)
+[![Release Status](https://github.com/bjw-s/helm3-unittest/workflows/release/badge.svg)](https://github.com/bjw-s/helm3-unittest/actions?query=workflow%3Arelease)
+[![Latest Release](https://img.shields.io/github/v/release/bjw-s/helm3-unittest)](https://github.com/bjw-s/helm3-unittest/releases)
 
-This is a fork of <https://github.com/lrills/helm-unittest> for Helm 3.
+This is a fork of <https://github.com/vbehar/helm3-unittest>.
 
 ## Documentation
 
@@ -19,11 +19,10 @@ If you are ready for writing tests, check the [DOCUMENT](./DOCUMENT.md) for the 
 - [Related Projects / Commands](#related-projects--commands)
 - [Contributing](#contributing)
 
-
 ## Install
 
 ```
-$ helm plugin install https://github.com/vbehar/helm3-unittest
+$ helm plugin install https://github.com/bjw-s/helm3-unittest
 ```
 
 It will install the latest version of binary into helm plugin directory.
@@ -50,13 +49,14 @@ tests:
           path: spec.template.spec.containers[0].image
           value: nginx:latest
 ```
+
 and run:
 
 ```
 $ helm unittest $YOUR_CHART
 ```
 
-Now there is your first test! ;)  
+Now there is your first test! ;)
 
 ## Test Suite File
 
@@ -65,6 +65,7 @@ The test suite file is written in pure YAML, and default placed under the `tests
 ```bash
 $ helm unittest -f 'my-tests/*.yaml' -f 'more-tests/*.yaml' my-chart
 ```
+
 Check [DOCUMENT](./DOCUMENT.md) for more details about writing tests.
 
 ## Usage
@@ -112,6 +113,7 @@ The `matchSnapshot` assertion validate the content rendered the same as cached l
 ```
 $ helm unittest -u my-chart
 ```
+
 The cache files is stored as `__snapshot__/*_test.yaml.snap` at the directory your test file placed, you should add them in version control with your chart.
 
 ## Tests within subchart
@@ -130,46 +132,5 @@ tests:
     asserts:
       - ...
 ```
+
 Check [`__fixtures__/with-subchart/`](./__fixtures__/with-subchart) as an example.
-
-## Related Projects / Commands
-
-This plugin is inspired by [helm-template](https://github.com/technosophos/helm-template), and the idea of snapshot testing and some printing format comes from [jest](https://github.com/facebook/jest).
-
-
-And there are some other helm commands you might want to use:
-
-- [`helm template`](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_template.md): render the chart and print the output.
-
-- [`helm lint`](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_lint.md): examines a chart for possible issues, useful to validate chart dependencies.
-
-- [`helm test`](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_test.md): test a release with testing pod defined in chart. Note this does create resources on your cluster to verify if your release is correct. Check the [doc](https://github.com/kubernetes/helm/blob/master/docs/chart_tests.md).
-
-## License
-
-MIT
-
-## Contributing
-
-Issues and PRs are welcome!  
-Before start developing this plugin, you must have [go](https://golang.org/doc/install) and [dep](https://github.com/golang/dep#installation) installed, and run:
-
-```
-git clone git@github.com:lrills/helm-unittest.git
-cd helm-unittest
-dep ensure
-```
-
-And please make CI passed when request a PR which would check following things:
-
-- `dep status` passed. Make sure you run `dep ensure` if new dependencies added.
-- `gofmt` no changes needed. Please run `gofmt -w -s` before you commit.
-- `go test ./unittest/...` passed.
-
-In some cases you might need to manually fix the tests in `*_test.go`. If the snapshot tests (of the plugin's test code) failed you need to run:
-
-```
-UPDATE_SNAPSHOTS=true go test ./unittest/...
-```
-
-This update the snapshot cache file and please add them before you commit.

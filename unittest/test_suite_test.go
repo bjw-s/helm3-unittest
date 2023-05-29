@@ -5,10 +5,10 @@ import (
 	"path"
 	"testing"
 
+	. "github.com/bjw-s/helm3-unittest/unittest"
+	"github.com/bjw-s/helm3-unittest/unittest/snapshot"
 	"github.com/bradleyjkemp/cupaloy"
 	"github.com/stretchr/testify/assert"
-	. "github.com/vbehar/helm3-unittest/unittest"
-	"github.com/vbehar/helm3-unittest/unittest/snapshot"
 	yaml "gopkg.in/yaml.v2"
 	"helm.sh/helm/v3/pkg/chart/loader"
 )
